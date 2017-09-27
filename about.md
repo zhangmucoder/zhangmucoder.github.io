@@ -12,15 +12,15 @@ title: 关于我
 <p>
 
 所在公司
-<a target="_blank" href="https://www.talkingdata.com/"> TalkingData </a>
+<a target="_blank" href="https://www.baidu.com/"> 艺心陪伴 </a>
 是一个移动互联网大数据平台的公司，无论你是运营、产品、开发 或者是App终端用户都可以了解下我们公司。
-<p>
+<!-- <p>
 
 推荐一个我维护的 Team 博客
 <a target="_blank" href="http://talkingdata.me/"> voyagelab </a>
 里面有一些关于 iOS 、Android 和 机器学习 的文章。
 
-<p>
+<p> -->
 
 <h3> 我们的博客 </h3>  
 
@@ -40,7 +40,7 @@ title: 关于我
 
 <p> 
 
-博客源码在 <a target="_blank" href='https://github.com/leopardpan/leopardpan.github.io/'>Github</a> 上，你的 Star 是我更新的动力，谢谢~
+博客源码在 <a target="_blank" href='https://github.com/coder-zhangmu/'>Github</a> 上，你的 Star 是我更新的动力，谢谢~
 
 <p> 
 
