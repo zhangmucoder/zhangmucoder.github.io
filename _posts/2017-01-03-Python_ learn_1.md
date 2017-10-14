@@ -176,6 +176,7 @@ print('backView  color:\033[41;1m%s\033[0m'%('背景颜色'))
 ### 字典的学习
 >*  setdefault:如果有key返回原有的value，如果没有重新添加一条
 >*  update:合并字典  如果有key更新value  如果没有新增一条
+
 ```
 #Author:zhangmucoder
 #字典 （OC用法一样 ）
@@ -200,14 +201,10 @@ print(info)
 # del info['stu001']#删除指定元素
 info.pop('syu001')
 # info.popitem()#随便删除一个
-
 print(info.get('stu004'))
-
 print('stu005' in info)#检查有没有这个元素
-
 '''
 ```
-
 <br>
 转载请注明：[心明无言的博客](https://zhangmucoder.github.io)  
 
