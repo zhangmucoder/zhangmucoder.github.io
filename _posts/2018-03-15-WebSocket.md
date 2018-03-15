@@ -27,6 +27,8 @@ HTTP的生命周期通过 Request 来界定，也就是一个 Request 一个 Res
 教练，你BB了这么多，跟Websocket有什么关系呢？_(:з」∠)_好吧，我正准备说Websocket呢。。
 首先Websocket是基于HTTP协议的，或者说借用了HTTP的协议来完成一部分握手。
 首先我们来看个典型的 Websocket 握手（借用Wikipedia的。。）
+
+```bash
 GET /chat HTTP/1.1
 Host: server.example.com
 Upgrade: websocket
@@ -35,6 +37,8 @@ Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
 Sec-WebSocket-Protocol: chat, superchat
 Sec-WebSocket-Version: 13
 Origin: http://example.com
+```
+
 熟悉HTTP的童鞋可能发现了，这段类似HTTP协议的握手请求中，多了几个东西。我会顺便讲解下作用。
 Upgrade: websocket
 Connection: Upgrade
@@ -47,15 +51,17 @@ Sec-WebSocket-Version: 13
 最后， Sec-WebSocket-Version 是告诉服务器所使用的 Websocket Draft （协议版本），在最初的时候，Websocket协议还在 Draft 阶段，各种奇奇怪怪的协议都有，而且还有很多期奇奇怪怪不同的东西，什么Firefox和Chrome用的不是一个版本之类的，当初Websocket协议太多可是一个大难题。。不过现在还好，已经定下来啦~大家都使用的一个东西~ 脱水： 服务员，我要的是13岁的噢→_→
 然后服务器会返回下列东西，表示已经接受到请求， 成功建立Websocket啦！
 
+```bash
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
 Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
 Sec-WebSocket-Protocol: chat
-这里开始就是HTTP最后负责的区域了，告诉客户，我已经成功切换协议啦~
+```
 
-Upgrade: websocket
-Connection: Upgrade
+这里开始就是HTTP最后负责的区域了，告诉客户，我已经成功切换协议啦~  
+Upgrade: websocket 
+Connection: Upgrade  
 依然是固定的，告诉客户端即将升级的是 Websocket 协议，而不是mozillasocket，lurnarsocket或者shitsocket。
 然后， Sec-WebSocket-Accept 这个则是经过服务器确认，并且加密过后的 Sec-WebSocket-Key 。 服务器：好啦好啦，知道啦，给你看我的ID CARD来证明行了吧。。
 后面的， Sec-WebSocket-Protocol 则是表示最终使用的协议。
@@ -139,8 +145,10 @@ ajax轮询 需要服务器有很快的处理速度和资源。（速度）long p
 但是可以通过上面说的 long poll 和 ajax 轮询 来 模拟出类似的效果
 
 ### ***简单介绍一下心跳机制***
-	***心跳重连缘由***
-	在使用websocket过程中，可能会出现网络断开的情况，比如信号不好，或者网络临时性关闭，这时候websocket的连接已经断开，而浏览器不会执行websocket 的 onclose方法，我们无法知道是否断开连接，也就无法进行重连操作。如果当前发送websocket数据到后端，一旦请求超时，onclose便会执行，这时候便可进行绑定好的重连操作。因此websocket心跳重连就应运而生。
+
+**心跳重连缘由:***
+
+在使用websocket过程中，可能会出现网络断开的情况，比如信号不好，或者网络临时性关闭，这时候websocket的连接已经断开，而浏览器不会执行websocket 的 onclose方法，我们无法知道是否断开连接，也就无法进行重连操作。如果当前发送websocket数据到后端，一旦请求超时，onclose便会执行，这时候便可进行绑定好的重连操作。因此websocket心跳重连就应运而生。
 
 ### ***什么条件下执行心跳***
 
